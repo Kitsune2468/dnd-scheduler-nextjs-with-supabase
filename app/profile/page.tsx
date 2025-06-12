@@ -78,17 +78,17 @@ export default function ProfilePage() {
     if (error) {
       console.error('Supabase error:', error.message, error.details, error.hint)
       alert(`Error: ${error.message}`)
-    } else alert('Profile updated!')
+    }
 
     setLoading(false)
   }
 
-  if (loading) return <p>Loading...</p>
-
-  return (
+  if (loading) {
+    return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
       <h1 className="text-xl font-bold mb-4">Edit Profile</h1>
       <form onSubmit={updateProfile} className="space-y-4">
+        Name
         <input
           type="text"
           placeholder="Display Name"
@@ -96,6 +96,7 @@ export default function ProfilePage() {
           onChange={(e) => setDisplayName(e.target.value)}
           className="w-full border px-3 py-2 rounded"
         />
+        Avatar URL
         <input
           type="text"
           placeholder="Avatar URL"
@@ -103,6 +104,42 @@ export default function ProfilePage() {
           onChange={(e) => setAvatarUrl(e.target.value)}
           className="w-full border px-3 py-2 rounded"
         />
+        Bio
+        <textarea
+          placeholder="Bio"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          className="w-full border px-3 py-2 rounded"
+        />
+        <div>
+          Saving...
+        </div>
+      </form>
+    </div>
+  )
+  }
+
+  return (
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
+      <h1 className="text-xl font-bold mb-4">Edit Profile</h1>
+      <form onSubmit={updateProfile} className="space-y-4">
+        Name
+        <input
+          type="text"
+          placeholder="Display Name"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+          className="w-full border px-3 py-2 rounded"
+        />
+        Avatar URL
+        <input
+          type="text"
+          placeholder="Avatar URL"
+          value={avatarUrl}
+          onChange={(e) => setAvatarUrl(e.target.value)}
+          className="w-full border px-3 py-2 rounded"
+        />
+        Bio
         <textarea
           placeholder="Bio"
           value={bio}
