@@ -36,10 +36,6 @@ export default function CharactersPage() {
       setCharacters(characters);
     }
   }
-  
-  async function createCharacter() {
-
-  }
 
   // No characters
   if(characters.length == 0) {
