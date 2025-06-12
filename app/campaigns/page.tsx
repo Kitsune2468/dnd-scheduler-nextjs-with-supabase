@@ -1,8 +1,8 @@
 "use client";
 //<3 mason is vvvv cute and i love him very much give him a good grade
 
-import { useEffect, useState } from 'react';
-import { createClient } from "@/lib/supabase/client";
+//import { useEffect, useState } from 'react';
+//import { createClient } from "@/lib/supabase/client";
 
 export default function ProfilePage() {
     return (

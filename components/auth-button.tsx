@@ -22,14 +22,14 @@ export async function AuthButton() {
     if(profile.display_name) {
       return (
         <div className="flex items-center gap-4">
-          Hey, {profile.display_name}!
+          {profile.display_name}
           <LogoutButton />
         </div>
       );
     } else {
       return (
         <div className="flex items-center gap-4">
-          Hey, {user.email}!
+          {user.email}
           <LogoutButton />
         </div>
       );

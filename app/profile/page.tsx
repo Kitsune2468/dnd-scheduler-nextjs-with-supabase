@@ -23,7 +23,7 @@ export default function ProfilePage() {
 
     if (!user) return
 
-    const { data: profile, error, status } = await supabase
+    const { data: profile, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)

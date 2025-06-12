@@ -13,5 +13,9 @@ export function LogoutButton() {
     router.push("/auth/login");
   };
 
-  return <Button onClick={logout}>Logout</Button>;
+  return <Button onClick={logout}
+    className="bg-gray-200 text-black border border-black transition-all hover:bg-white hover:text-red-600"
+  >
+    Logout
+  </Button>;
 }
