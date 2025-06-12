@@ -87,8 +87,8 @@ export default function ProfilePage() {
     return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
       <h1 className="text-xl font-bold mb-4">Edit Profile</h1>
-      <form onSubmit={updateProfile} className="space-y-4">
-        Name
+      <form onSubmit={updateProfile} className="space-y-0">
+        <h2 className="p-1">Name</h2>
         <input
           type="text"
           placeholder="Display Name"
@@ -96,7 +96,7 @@ export default function ProfilePage() {
           onChange={(e) => setDisplayName(e.target.value)}
           className="w-full border px-3 py-2 rounded"
         />
-        Avatar URL
+        <h2 className="p-1">Avatar URL</h2>
         <input
           type="text"
           placeholder="Avatar URL"
@@ -104,7 +104,7 @@ export default function ProfilePage() {
           onChange={(e) => setAvatarUrl(e.target.value)}
           className="w-full border px-3 py-2 rounded"
         />
-        Bio
+        <h2 className="p-1">Bio</h2>
         <textarea
           placeholder="Bio"
           value={bio}
@@ -122,8 +122,8 @@ export default function ProfilePage() {
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
       <h1 className="text-xl font-bold mb-4">Edit Profile</h1>
-      <form onSubmit={updateProfile} className="space-y-4">
-        Name
+      <form onSubmit={updateProfile} className="space-y-0">
+        <h2 className="p-1">Name</h2>
         <input
           type="text"
           placeholder="Display Name"
@@ -131,7 +131,7 @@ export default function ProfilePage() {
           onChange={(e) => setDisplayName(e.target.value)}
           className="w-full border px-3 py-2 rounded"
         />
-        Avatar URL
+        <h2 className="p-1">Avatar URL</h2>
         <input
           type="text"
           placeholder="Avatar URL"
@@ -139,7 +139,7 @@ export default function ProfilePage() {
           onChange={(e) => setAvatarUrl(e.target.value)}
           className="w-full border px-3 py-2 rounded"
         />
-        Bio
+        <h2 className="p-1">Bio</h2>
         <textarea
           placeholder="Bio"
           value={bio}

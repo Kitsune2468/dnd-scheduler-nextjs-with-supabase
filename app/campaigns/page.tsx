@@ -63,7 +63,7 @@ export default function CampaignsPage() {
           </Button>
         </header>
         {/* DMing campaign cards */}
-        <h2>Campaigns you are in charge of</h2>
+        <h2 className="p-4">Campaigns you are in charge of</h2>
          {DMCampaigns.length === 0 ? (
             <p className="text-center text-gray-500 text-lg">You aren't DMing any campaigns yet.</p>
             ) : (
@@ -90,7 +90,7 @@ export default function CampaignsPage() {
           ))}
         </div>)}
         {/* Playing in campaign cards */}
-        <h2>Campaigns you are playing in</h2>
+        <h2 className="p-4">Campaigns you are playing in</h2>
         {PlayingCampaigns.length === 0 ? (
             <p className="text-center text-gray-500 text-lg">You aren't playing in any campaigns yet.</p>
             ) : (
