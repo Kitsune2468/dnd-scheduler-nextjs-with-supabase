@@ -18,7 +18,7 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   display: "swap",
   subsets: ["latin"],
-});
+}); 
 
 export default function RootLayout({
   children,
@@ -27,14 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+      <body className={`${geistSans.className} bg-gray-100 text-black min-h-screen w-full antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <Header /> {}
+          <main className="pt-36 px-6 sm:px-8 md:px-12 mx-auto w-full">{children}</main>
         </ThemeProvider>
       </body>
     </html>
