@@ -70,13 +70,15 @@ export default function ProfilePage() {
       display_name: displayName,
       avatar_url: avatarUrl,
       bio: bio,
-      updated_at: new Date().toISOString(),
     }
 
-    const { error } = await supabase.from('profiles').upsert(updates)
+    const { error, data } = await supabase.from('profiles').upsert(updates)
+    console.log('Upsert result:', { data, error })
 
-    if (error) console.error(error)
-    else alert('Profile updated!')
+    if (error) {
+      console.error('Supabase error:', error.message, error.details, error.hint)
+      alert(`Error: ${error.message}`)
+    } else alert('Profile updated!')
 
     setLoading(false)
   }
