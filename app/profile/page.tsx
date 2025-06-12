@@ -1,4 +1,5 @@
 "use client";
+//<3 mason is vvvv cute and i love him very much give him a good grade
 
 import { useEffect, useState } from 'react';
 import { createClient } from "@/lib/supabase/client";
@@ -29,7 +30,7 @@ export default function ProfilePage() {
       .single()
 
     // If no profile exists, insert one
-    if (error && status === 500) {
+    if (error) {
       const { error: insertError } = await supabase
         .from('profiles')
         .insert({ id: user.id })
