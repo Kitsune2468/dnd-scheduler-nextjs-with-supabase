@@ -35,7 +35,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header /> {}
-          <main className="pt-36 px-6 sm:px-8 md:px-12 mx-auto w-full">{children}</main>
+          <main className="pt-48 px-6 sm:px-8 md:px-12 mx-auto w-full">{children}</main>
         </ThemeProvider>
       </body>
     </html>
