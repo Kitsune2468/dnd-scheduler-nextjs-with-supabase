@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { AuthButton } from "@/components/auth-button";
 
 export default function Header() {
   return (
@@ -36,6 +37,9 @@ export default function Header() {
             </Link>
           </li>
         </ul>
+        <div className="text-flex font-bold tracking-tight">
+          <AuthButton />
+        </div>
       </nav>
     </header>
   )

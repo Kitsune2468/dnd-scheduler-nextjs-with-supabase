@@ -8,7 +8,7 @@ export default function ProfilePage() {
     return (
         <div className="flex items-center justify-center p-6 md:p-10">
           <div className="w-full max-w-sm text-center">
-            Characters
+            Campaigns
           </div>
         </div>)
 }
