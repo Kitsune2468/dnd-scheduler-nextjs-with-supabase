@@ -1,75 +1,94 @@
-"use client";
+'use client';
 
-import { use, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 
-export default function EditCampaign({params}: { params: Promise<{ id: string }> }) {
-    const {id} = use(params);
-    const [name, setName] = useState('');
-    const supabase = createClient();
-    const router = useRouter();
+export default function EditSessionPage() {
+  const router = useRouter();
+  const params = useParams();
+  const sessionId = Array.isArray(params.id) ? params.id[0] : params.id;
+  const supabase = createClient();
 
-    useEffect(() => {
-    async function loadCampaign() {
-      const { data: campaigns, error } = await supabase
-        .from('campaigns')
-        .select('*')
-        .eq('id', id)
-        .single();
+  const [campaignName, setCampaignName] = useState('');
+  const [sessionTime, setSessionTime] = useState('');
+  const [notes, setNotes] = useState('');
 
-      if (error || !campaigns) {
-        return;
-      }
+  useEffect(() => {
+    loadSession();
+  }, []);
 
-      setName(campaigns.name);
+  async function loadSession() {
+    const { data, error } = await supabase
+      .from('sessions')
+      .select('*')
+      .eq('id', sessionId)
+      .single();
+
+    const { data: campaign } = await supabase
+      .from('campaigns')
+      .select('name')
+      .eq('id', data.campaign_id)
+      .single();
+
+    if (error) {
+      console.error(error);
+    } else if (data) {
+      setSessionTime(data.session_time.slice(0, 16)); // ISO format for input
+      setNotes(data.notes || '');
+      setCampaignName(campaign?.name)
     }
+  }
 
-    loadCampaign();
-    }, [id]);
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
 
-    async function handleSubmit(e: React.FormEvent) {
-        e.preventDefault();
+    const { error } = await supabase
+      .from('sessions')
+      .update({
+        session_time: new Date(sessionTime).toISOString(),
+        notes,
+      })
+      .eq('id', sessionId);
 
-        const supabase = createClient();
-        const {
-        data: { user },
-        } = await supabase.auth.getUser();
-
-        const { error } = await supabase.from('campaigns').update([
-        {
-            name,
-        },
-        ]).eq('id',id);
-
-        if (error) {
-        alert('Failed to edit campaign');
-        console.error(error);
-        } else {
-        router.push(`/campaigns/${id}`);
-        }
+    if (error) {
+      console.error(error);
+      alert('Failed to update session');
+    } else {
+      router.push('/sessions');
     }
+  }
 
-    return (
-    <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
+  return (
+    <main className="min-h-screen px-6 py-16 bg-gray-100 text-black">
       <section className="max-w-xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Edit Campaign - {name}</h1>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <h1 className="text-3xl font-bold mb-6">Edit Session</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <label className="block font-medium">Campaign - {campaignName}</label>
+          </div>
+          <div>
+            <label className="block font-medium">Session Time</label>
+            <input
+              required
+              type="datetime-local"
+              value={sessionTime}
+              onChange={(e) => setSessionTime(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
           </div>
 
-          <div className="flex justify-end gap-4">
-            <Button type="button" variant="outline" onClick={() => router.back()}>
-              Cancel
-            </Button>
-            <Button type="submit">Save Changes</Button>
+          <div>
+            <label className="block font-medium">Notes</label>
+            <textarea
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
           </div>
+
+          <Button type="submit">Save Changes</Button>
         </form>
       </section>
     </main>

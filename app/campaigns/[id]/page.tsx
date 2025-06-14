@@ -61,9 +61,14 @@ export default function ViewCampaign({params}: { params: Promise<{ id: string }>
                 <div>
                     <div>
                         {isDM ? (
-                            <Button asChild size="sm">
-                                <Link href={`/campaigns/${id}/edit`}>Edit</Link>
-                            </Button> 
+                            <div>
+                                <Button asChild size="sm">
+                                    <Link href={`/campaigns/${id}/edit`}>Edit</Link>
+                                </Button> 
+                                <Button asChild size="sm">
+                                    <Link href={`/campaigns/${id}/newSession`}>Add Session</Link>
+                                </Button> 
+                            </div>
                         ) : (
                             <p className='text-gray-600'>
                                 Dungeon Master: {dungeonMasterName || "Error"}

@@ -8,19 +8,21 @@ import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
 import Link from "next/link";
 
-export default function ViewCampaign({params}: { params: Promise<{ id: string }> }) {
+export default function ViewSession({params}: { params: Promise<{ id: string }> }) {
     const {id} = use(params);
     const [name, setName] = useState('');
     const [dungeonMasterName, setDMName] = useState('');
+    const [sessionTime, setSessionTime] = useState(Date);
+    const [timeString, setTimeString] = useState('');
     const [dungeonMasterID, setDMID] = useState('');
     const [isDM, setIsDM] = useState(false);
     const [isPlayer, setIsPlayer] = useState(false);
 
     useEffect(() => {
-          loadCampaign()
+          loadSession()
         }, [])
 
-    async function loadCampaign() {
+    async function loadSession() {
         const supabase = createClient();
         const {
         data: { user },
@@ -30,14 +32,40 @@ export default function ViewCampaign({params}: { params: Promise<{ id: string }>
             return 
         };
 
+        const { data: session } = await supabase
+            .from('sessions')
+            .select('*')
+            .eq('id', id)
+            .single();
+        
+        if(!session) {
+            return
+        }
+        
         const { data: campaign } = await supabase
             .from('campaigns')
             .select('*')
-            .eq('id', id)
+            .eq('id', session.campaign_id)
             .single();
 
         if(!campaign) {
             return
+        }
+        function formatDate(isoString: string) {
+            const date = new Date(isoString);
+
+            // Example format: "June 19, 2025, 2:34 AM"
+            const options: Intl.DateTimeFormatOptions = {
+                year: 'numeric',
+                month: 'long',  // full month name
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true,
+                timeZoneName: 'short' // optional, shows timezone like GMT
+            };
+
+            return date.toLocaleString(undefined, options);
         }
 
         const { data: dungeonMaster } = await supabase
@@ -49,6 +77,8 @@ export default function ViewCampaign({params}: { params: Promise<{ id: string }>
         setName(campaign.name);
         setDMName(dungeonMaster.display_name);
         setDMID(dungeonMaster.id);
+        setSessionTime(session.session_time)
+        setTimeString(formatDate(sessionTime))
         if(campaign.dungeon_master === user.id) {
             setIsDM(!isDM);
         }
@@ -57,12 +87,12 @@ export default function ViewCampaign({params}: { params: Promise<{ id: string }>
     return (
         <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
             <section className="max-w-xl mx-auto">
-                <h1 className="text-3xl font-bold mb-6">Campaign Page {name || "Error"}</h1>
+                <h1 className="text-3xl font-bold mb-6">Session Page - {name || "Error"}</h1>
                 <div>
                     <div>
                         {isDM ? (
                             <Button asChild size="sm">
-                                <Link href={`/campaigns/${id}/edit`}>Edit</Link>
+                                <Link href={`/sessions/${id}/edit`}>Edit</Link>
                             </Button> 
                         ) : (
                             <p className='text-gray-600'>
@@ -71,12 +101,12 @@ export default function ViewCampaign({params}: { params: Promise<{ id: string }>
                         )}
 
                         <p className='text-black'>
-                            Players: (To be implemented)
+                            Time: {timeString}
                         </p>
+
                         <p className='text-black'>
-                            Sessions: (To be implemented)
+                            Attending: (To be implemented)
                         </p>
-                        
                     </div>
                 </div>
             </section>
