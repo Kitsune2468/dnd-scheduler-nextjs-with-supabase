@@ -77,11 +77,9 @@ export default function CampaignsPage() {
                 <h2 className="text-2xl font-semibold mb-2">{char.name}</h2>
 
                 <div className="mt-4 flex justify-between items-center">
-                  {/*
                   <Button asChild variant="outline" size="sm">
-                    <Link href={`/characters/${char.id}`}>View</Link>
+                    <Link href={`/campaigns/${char.id}`}>View</Link>
                   </Button>
-                  */}
                   <Button asChild size="sm">
                     <Link href={`/campaigns/${char.id}/edit`}>Edit</Link>
                   </Button>
@@ -104,13 +102,8 @@ export default function CampaignsPage() {
                 <h2 className="text-2xl font-semibold mb-2">{char.name}</h2>
 
                 <div className="mt-4 flex justify-between items-center">
-                  {/*
                   <Button asChild variant="outline" size="sm">
-                    <Link href={`/characters/${char.id}`}>View</Link>
-                  </Button>
-                  */}
-                  <Button asChild size="sm">
-                    <Link href={`/campaigns/${char.id}/edit`}>Edit</Link>
+                    <Link href={`/campaigns/${char.id}`}>View</Link>
                   </Button>
                 </div>
               </div>
