@@ -82,11 +82,9 @@ export default function CharactersPage() {
             </p>
 
             <div className="mt-4 flex justify-between items-center">
-              {/*
               <Button asChild variant="outline" size="sm">
                 <Link href={`/characters/${char.id}`}>View</Link>
               </Button>
-              */}
               <Button asChild size="sm">
                 <Link href={`/characters/${char.id}/edit`}>Edit</Link>
               </Button>
