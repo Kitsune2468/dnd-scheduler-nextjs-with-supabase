@@ -44,10 +44,10 @@ export default function NewCharacter() {
     return (
         <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
             <section className="max-w-xl mx-auto">
-                <h1 className="text-3xl font-bold mb-6">Create a New Character</h1>
+                <h1 className="text-4xl font-bold mb-6 text-center">Create a New Character</h1>
                 <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-xl shadow">
                 <div>
-                    <label className="block font-medium mb-1">Name</label>
+                    <label className="block text-2xl mb-1">Name</label>
                     <input
                     required
                     className="w-full border border-gray-300 rounded px-3 py-2"
@@ -57,7 +57,7 @@ export default function NewCharacter() {
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Race</label>
+                    <label className="block text-2xl mb-1">Race</label>
                     <input
                     className="w-full border border-gray-300 rounded px-3 py-2"
                     value={race}
@@ -66,7 +66,7 @@ export default function NewCharacter() {
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Class</label>
+                    <label className="block text-2xl mb-1">Class</label>
                     <input
                     className="w-full border border-gray-300 rounded px-3 py-2"
                     value={characterClass}
@@ -75,7 +75,7 @@ export default function NewCharacter() {
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Level</label>
+                    <label className="block text-2xl mb-1">Level</label>
                     <input
                     type="number"
                     min={1}

@@ -63,32 +63,34 @@ export default function ViewCharacter({params}: { params: Promise<{ id: string }
     return (
         <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
             <section className="max-w-xl mx-auto">
-                <h1 className="text-3xl font-bold mb-6">Character Page</h1>
+                <div className="flex justify-center items-center">
+                    <h1 className="text-3xl font-bold mb-8 mr-8">Character Page</h1>
+                    {isOwner &&
+                    <Button asChild size="sm" className="mb-8">
+                        <Link href={`/characters/${id}/edit`}>Edit</Link>
+                    </Button> 
+                    }
+
+                </div>
+                
                 <div>
-                    <div>
-                        {isOwner === true ? (
-                            <Button asChild size="sm">
-                                <Link href={`/characters/${id}/edit`}>Edit</Link>
-                            </Button> 
-                        ) : (
-                            <p className='text-gray-600'>
-                            Played by: {ownerName || "Error"}
-                            </p> 
-                        )}
-                        <p className='text-black'>
-                            {name || "Error"}
-                        </p>
-                        
-                        <p className='text-black'>
-                            Level: {level || "Error"}
-                        </p>
-                        <p className='text-black'>
-                            Race: {race || "Error"}
-                        </p>
-                        <p className='text-black'>
-                            Class: {characterClass || "Error"}
-                        </p>
-                    </div>
+                    <h2 className="text-2xl font-semibold mb-1">
+                        {name || "Error"}
+                    </h2>
+                    {!isOwner &&
+                        <p className='text-gray-600'>
+                        Played by: {ownerName || "Error"}
+                        </p> 
+                    }      
+                    <p className='text-black'>
+                        Level: {level || "Error"}
+                    </p>
+                    <p className='text-black'>
+                        Race: {race || "Error"}
+                    </p>
+                    <p className='text-black'>
+                        Class: {characterClass || "Error"}
+                    </p>
                 </div>
             </section>
         </main>

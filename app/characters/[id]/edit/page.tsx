@@ -68,7 +68,7 @@ export default function EditCharacter({params}: { params: Promise<{ id: string }
       <section className="max-w-xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Edit Character</h1>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-2">
           <div>
             <Label htmlFor="name">Name</Label>
             <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
@@ -102,10 +102,10 @@ export default function EditCharacter({params}: { params: Promise<{ id: string }
           </div>
 
           <div className="flex justify-end gap-4">
+            <Button type="submit">Save Changes</Button>
             <Button type="button" variant="outline" onClick={() => router.back()}>
               Cancel
             </Button>
-            <Button type="submit">Save Changes</Button>
           </div>
         </form>
       </section>

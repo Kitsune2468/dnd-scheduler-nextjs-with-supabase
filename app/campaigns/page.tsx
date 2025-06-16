@@ -56,14 +56,14 @@ export default function CampaignsPage() {
     <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
       <section className="max-w-6xl mx-auto">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">Your Campaigns</h1>
-          <p className="text-lg text-gray-700">Manage your D&D campaigns here.</p>
+          <h1 className="text-4xl font-bold mb-1">Your Campaigns</h1>
+          <p className="text-med text-gray-700 mb-4">Manage your D&D campaigns here.</p>
           <Button asChild>
             <Link href="/campaigns/new">Create New Campaign</Link>
           </Button>
         </header>
         {/* DMing campaign cards */}
-        <h2 className="p-4">Campaigns you are in charge of</h2>
+        <h2 className="text-2xl font-bold mb-4">Campaigns you DM:</h2>
          {DMCampaigns.length === 0 ? (
             <p className="text-center text-gray-500 text-lg">You aren't DMing any campaigns yet.</p>
             ) : (
@@ -72,12 +72,12 @@ export default function CampaignsPage() {
               {DMCampaigns.map((char) => (
               <div
                 key={char.id}
-                className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-shadow"
+                className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-shadow text-center"
               >
-                <h2 className="text-2xl font-semibold mb-2">{char.name}</h2>
+                <h2 className="text-2xl font-semibold mb-1">{char.name}</h2>
 
-                <div className="mt-4 flex justify-between items-center">
-                  <Button asChild variant="outline" size="sm">
+                <div className="mt-2 flex justify-center">
+                  <Button asChild variant="outline" size="sm" className='mr-8'>
                     <Link href={`/campaigns/${char.id}`}>View</Link>
                   </Button>
                   <Button asChild size="sm">
@@ -88,7 +88,7 @@ export default function CampaignsPage() {
           ))}
         </div>)}
         {/* Playing in campaign cards */}
-        <h2 className="p-4">Campaigns you are playing in</h2>
+        <h2 className="text-2xl font-bold mb-4 mt-4">Campaigns you play in:</h2>
         {PlayingCampaigns.length === 0 ? (
             <p className="text-center text-gray-500 text-lg">You aren't playing in any campaigns yet.</p>
             ) : (

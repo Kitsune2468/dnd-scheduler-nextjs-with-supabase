@@ -43,8 +43,8 @@ export default function CharactersPage() {
       <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
       <section className="max-w-6xl mx-auto">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">Your Characters</h1>
-          <p className="text-lg text-gray-700">Manage your D&D characters here.</p>
+          <h1 className="text-4xl font-bold mb-2">Your Characters</h1>
+          <p className="text-med text-gray-700 mb-2">Manage your D&D characters here.</p>
           <Button asChild>
             <Link href="/characters/new">Create New Character</Link>
           </Button>
@@ -62,8 +62,8 @@ export default function CharactersPage() {
     <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
       <section className="max-w-6xl mx-auto">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">Your Characters</h1>
-          <p className="text-lg text-gray-700">Manage your D&D characters here.</p>
+          <h1 className="text-4xl font-bold mb-2">Your Characters</h1>
+          <p className="text-med text-gray-700 mb-2">Manage your D&D characters here.</p>
           <Button asChild>
             <Link href="/characters/new">Create New Character</Link>
           </Button>
@@ -81,8 +81,8 @@ export default function CharactersPage() {
               Level {char.level} {char.race} {char.class}
             </p>
 
-            <div className="mt-4 flex justify-between items-center">
-              <Button asChild variant="outline" size="sm">
+            <div className="mt-4 flex justify-center">
+              <Button asChild variant="outline" size="sm" className='mr-8'>
                 <Link href={`/characters/${char.id}`}>View</Link>
               </Button>
               <Button asChild size="sm">
