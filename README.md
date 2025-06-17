@@ -5,7 +5,7 @@
 Scheduling sessions and keeping track of information for campaigns and oneshots is the bane of players and DMs alike. The purpose of this project is to create a prototype server and client for a scheduling application specifically tailored for D&D campaigns and one-shots. Users will be able to create campaigns and one-shots, as well as characters with basic info such as name, level, and class/classes. Users will be able to join campaigns and one-shots and add their characters to it, while the DM/creator of the campaign will be able to schedule sessions that all players in the campaign are able to see.
 
 ## Design
-![ERD Document](drawSQL-image-export-2025-05-09%20(1).png)
+![ERD Document](ERD.png)
 ![Systems Document](SystemsDiagram.jpg)
 
 ## Goals
