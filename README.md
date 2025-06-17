@@ -6,7 +6,7 @@ Scheduling sessions and keeping track of information for campaigns and oneshots 
 
 ## Design
 ![ERD Document](ERD.png)
-![Systems Document](SystemsDiagram.jpg)
+![Systems Document](SystemsDiagram.png)
 
 ## Goals
 (Note: These were my initial goals, but when I decided to switch to a vercel/supabase project I forgot to go back and change them!)
