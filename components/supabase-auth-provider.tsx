@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 
 export default function SupabaseAuthListener() {
   const router = useRouter();
@@ -11,13 +11,21 @@ export default function SupabaseAuthListener() {
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, _session) => {
-      // Revalidate the route to get fresh data
-      router.refresh(); // This triggers a server component reload
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      // 1.  Send the fresh session to the server so cookies stay in sync
+      await fetch('/auth/callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ event, session }),
+      });
+
+      // 2.  Re‑render all server components
+      router.refresh();
     });
 
     return () => subscription.unsubscribe();
   }, [router, supabase]);
 
-  return null;
+  return null; // nothing visual
 }
