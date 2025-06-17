@@ -87,27 +87,29 @@ export default function ViewSession({params}: { params: Promise<{ id: string }> 
     return (
         <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
             <section className="max-w-xl mx-auto">
-                <h1 className="text-3xl font-bold mb-6">Session Page - {name || "Error"}</h1>
+                <h1 className="text-3xl font-bold mb-6 text-center">Session Page</h1>
                 <div>
-                    <div>
-                        {isDM ? (
-                            <Button asChild size="sm">
-                                <Link href={`/sessions/${id}/edit`}>Edit</Link>
-                            </Button> 
-                        ) : (
-                            <p className='text-gray-600'>
-                                Dungeon Master: {dungeonMasterName || "Error"}
-                            </p> 
-                        )}
-
-                        <p className='text-black'>
-                            Time: {timeString}
-                        </p>
-
-                        <p className='text-black'>
-                            Attending: (To be implemented)
-                        </p>
+                    <div className="flex">
+                        <h2 className="text-2xl font-medium mb-2 mr-2">Campaign: </h2>
+                        <h2 className="text-2xl mb-2">{name || "Error"}</h2>
                     </div>
+                    
+                    <div className="flex">
+                        <h2 className="text-1xl font-medium mb-2 mr-2">Time: </h2>
+                        <h2 className="text-1xl mb-2">{timeString || "Error"}</h2>
+                    </div>
+                    {/* <p className='text-black'>
+                        Attending: (To be implemented)
+                    </p> */}
+                    {isDM ? (
+                        <Button asChild size="sm">
+                            <Link href={`/sessions/${id}/edit`}>Edit</Link>
+                        </Button> 
+                    ) : (
+                        <p className='text-gray-600'>
+                            Dungeon Master: {dungeonMasterName || "Error"}
+                        </p> 
+                    )}
                 </div>
             </section>
         </main>

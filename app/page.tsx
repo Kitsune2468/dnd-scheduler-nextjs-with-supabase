@@ -6,8 +6,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-      <main className="min-h-screen bg-white text-black flex items-center justify-center px-4">
-        <section className="max-w-4xl text-center py-20">
+      <main className="min-h-screen bg-white text-black flex pt-60 justify-center px-4">
+        <section className="max-w-4xl text-center">
           <h1 className="text-5xl font-bold mb-6">Welcome to D&D Scheduler</h1>
           <p className="text-xl mb-10">
             Organize your campaigns, track characters, and schedule sessions — all in one place.
@@ -24,21 +24,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-        <ThemeSwitcher />
-      </footer>
     </div>
   );
 }

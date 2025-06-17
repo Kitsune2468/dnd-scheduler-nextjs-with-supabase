@@ -86,7 +86,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h1 className="text-xl font-bold mb-4">Edit Profile</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Edit Profile</h1>
       <form onSubmit={updateProfile} className="space-y-0">
         <h2 className="p-1">Name</h2>
         <input
@@ -121,7 +121,7 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h1 className="text-xl font-bold mb-4">Edit Profile</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Edit Profile</h1>
       <form onSubmit={updateProfile} className="space-y-0">
         <h2 className="p-1">Name</h2>
         <input
@@ -149,7 +149,7 @@ export default function ProfilePage() {
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-800"
         >
           {loading ? 'Saving...' : 'Update Profile'}
         </button>

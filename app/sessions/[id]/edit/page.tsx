@@ -63,7 +63,7 @@ export default function EditSessionPage() {
   return (
     <main className="min-h-screen px-6 py-16 bg-gray-100 text-black">
       <section className="max-w-xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Edit Session</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">Edit Session</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block font-medium">Campaign - {campaignName}</label>

@@ -78,7 +78,7 @@ export default function SessionsPage() {
   return (
     <main className="min-h-screen bg-gray-100 px-6 py-16 text-black">
       <section className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Your Sessions</h1>
+        <h1 className="text-4xl font-bold mb-6 text-center">Your Sessions</h1>
 
         {sessions.length === 0 ? (
           <p className="text-gray-600">You’re not part of any sessions yet.</p>
